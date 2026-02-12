@@ -1,7 +1,127 @@
-echo "# Work" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/DaCoder1204/Work.git
-git push -u origin main
+import java.util.ArrayList;
+public class JacobHolder<T>
+{
+    private T[] bucket;
+    private int size;
+    
+    
+    public JacobHolder(){
+        bucket = (T[]) new Object[10];
+        size = 0;
+    }
+    
+    
+    public JacobHolder cloneClass() {
+        JacobHolder<T> copy = new JacobHolder<>();
+        
+        copy.bucket = (T[]) new Object[this.bucket.length];
+        
+        for (int i = 0; i < this.size; i++) {
+            copy.bucket[i] = this.bucket[i];
+        }
+        
+        copy.size = this.size;
+        return copy;
+    }
+    
+    
+    public T getIndex (int index){
+        if (index < 0 || index >= size) {
+            System.out.println("Error: Index " + index + " is out of bounds.");
+            return null;
+        }
+        return bucket[index];
+    }
+    
+    public T[] getBucket(){
+        return bucket;
+    }
+
+    public void addToBucket(T someUserInput) {
+        if (size >= bucket.length) {
+            biggerBucket();
+        }
+        
+        bucket[size] = someUserInput;
+        size++;
+    }
+    
+    
+    public void replace(int index, T newValue){
+        if (index < 0 || index >= size) {
+            System.out.println("Error: index " + index + " is out of bounds.");
+            return;
+        }
+        bucket[index] = newValue;
+    }
+
+    
+    public boolean find(T value) {
+        for(int i = 0; i < size; i++) {
+            if(bucket[i].equals(value)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
+    public int findCount(T value) {
+        int count = 0;
+        for(int i = 0; i < size; i++) {
+            if (bucket[i].equals(value)) {
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    
+    public int size() {
+        return size;
+    }
+
+    
+    public void biggerBucket() {
+        int newSize = bucket.length * 2;
+        T[] biggerArray = (T[]) new Object[newSize];
+         
+        for (int i = 0; i < bucket.length; i++) {
+            biggerArray[i] = bucket[i];
+        }
+        bucket = biggerArray;
+        System.out.println("Bucket grew to size " + newSize);
+    }    
+    
+    
+    public void clear() {
+        bucket = (T[]) new Object[10];
+        size = 0;
+        
+        System.out.println("The Bucket has been cleared.");
+    }
+    
+    
+    public void remove(int index) {
+        if (index < 0 || index >= size) {
+         System.out.println("Error: index " + index + " is out of bounds.");
+         return;
+        }
+        
+        for(int i = index; i < size - 1; i++) {
+             bucket[i] = bucket[i + 1];
+         }
+         
+        bucket[size - 1] = null; 
+        size--;
+    }
+    
+    
+    public void addToEnd(T item) {
+        if(size >= bucket.length) {
+            biggerBucket();
+        }
+        bucket[size] = item;
+        size++;
+    }
+}
