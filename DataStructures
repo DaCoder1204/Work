@@ -1,1 +1,46 @@
+public class Pokemon {
+    private int Hp;
 
+    public int getHp() {
+        return Hp;
+    }
+
+    public void setHp(int userInput) {
+        Hp = userInput;
+    }
+    
+    
+    public Object compareTo(Object obj) {
+        if(obj instanceof Pokemon) {
+            Pokemon other = (Pokemon) obj;
+            
+            if(this.Hp > other.Hp) {
+                return 1;
+            }
+            else if(this.Hp == other.Hp) {
+                return 0;
+            }
+            else {
+                return -1;
+            }
+        }
+        return null;
+    }
+    
+    //Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Pokemon) {
+            Pokemon other = (Pokemon) obj;
+            
+            if(this.getClass() == other.getClass() && this.Hp == other.Hp) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    //Override
+    public String toString() {
+        return this.getClass().getSimpleName();
+    }
+}
