@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>DeckTester.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #c792ea; font-style: italic;}
+.s1 { color: #c3cee3;}
+.s2 { color: #89ddff;}
+.s3 { color: #c3e88d;}
+.s4 { color: #959daa; font-style: italic;}
+.s5 { color: #f78c6c;}
+</style>
+</head>
+<body bgcolor="#1b2240">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+DeckTester.java</font>
+</center></td></tr></table>
+<pre><span class="s0">public class </span><span class="s1">DeckTester </span><span class="s2">{</span>
+    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String </span><span class="s2">[] </span><span class="s1">args</span><span class="s2">){</span>
+        <span class="s1">Deck</span><span class="s2">&lt;</span><span class="s1">Integer</span><span class="s2">&gt; </span><span class="s1">deck </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Deck</span><span class="s2">&lt;&gt;();</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s2">\n</span><span class="s3">====Start of Deck Test====&quot;</span><span class="s2">);</span>
+
+        <span class="s4">//Push values into array</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s2">\n</span><span class="s3">====Pushing in numbers 10, 20, 30====&quot;</span><span class="s2">);</span>
+        <span class="s1">deck</span><span class="s2">.</span><span class="s1">push</span><span class="s2">(</span><span class="s5">10</span><span class="s2">);</span>
+        <span class="s1">deck</span><span class="s2">.</span><span class="s1">push</span><span class="s2">(</span><span class="s5">20</span><span class="s2">);</span>
+        <span class="s1">deck</span><span class="s2">.</span><span class="s1">push</span><span class="s2">(</span><span class="s5">30</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">deck</span><span class="s2">);</span>
+
+        <span class="s4">// Test find</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s2">\n</span><span class="s3">====Testing find====&quot;</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Find 20 (true): &quot; </span><span class="s2">+ </span><span class="s1">deck</span><span class="s2">.</span><span class="s1">find</span><span class="s2">(</span><span class="s5">20</span><span class="s2">));</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Find 99 (false): &quot; </span><span class="s2">+ </span><span class="s1">deck</span><span class="s2">.</span><span class="s1">find</span><span class="s2">(</span><span class="s5">99</span><span class="s2">));</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Deck after find: &quot; </span><span class="s2">+ </span><span class="s1">deck</span><span class="s2">);</span>
+
+        <span class="s4">//Pop one number</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s2">\n</span><span class="s3">====Popping top number====&quot;</span><span class="s2">);</span>
+        <span class="s1">Integer popped </span><span class="s2">= </span><span class="s1">deck</span><span class="s2">.</span><span class="s1">pop</span><span class="s2">();</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Popped: &quot; </span><span class="s2">+ </span><span class="s1">popped</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">deck</span><span class="s2">);</span>
+
+        <span class="s4">//Push in more numbers</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s2">\n</span><span class="s3">====Pushing in 40 and 50====&quot;</span><span class="s2">);</span>
+        <span class="s1">deck</span><span class="s2">.</span><span class="s1">push</span><span class="s2">(</span><span class="s5">40</span><span class="s2">);</span>
+        <span class="s1">deck</span><span class="s2">.</span><span class="s1">push</span><span class="s2">(</span><span class="s5">50</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">deck</span><span class="s2">);</span>
+
+        <span class="s4">// Test find again</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s2">\n</span><span class="s3">====Testing find again====&quot;</span><span class="s2">);</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Find 50 (true): &quot; </span><span class="s2">+ </span><span class="s1">deck</span><span class="s2">.</span><span class="s1">find</span><span class="s2">(</span><span class="s5">50</span><span class="s2">));</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Find 10 (true): &quot; </span><span class="s2">+ </span><span class="s1">deck</span><span class="s2">.</span><span class="s1">find</span><span class="s2">(</span><span class="s5">10</span><span class="s2">));</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Find 123 (false): &quot; </span><span class="s2">+ </span><span class="s1">deck</span><span class="s2">.</span><span class="s1">find</span><span class="s2">(</span><span class="s5">123</span><span class="s2">));</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Deck after find: &quot; </span><span class="s2">+ </span><span class="s1">deck</span><span class="s2">);</span>
+
+        <span class="s4">//Pop everything in the array</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s2">\n</span><span class="s3">====Popping everything in array====&quot;</span><span class="s2">);</span>
+        <span class="s0">while </span><span class="s2">(</span><span class="s1">deck</span><span class="s2">.</span><span class="s1">size</span><span class="s2">() &gt; </span><span class="s5">0</span><span class="s2">) {</span>
+            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;====Popped: &quot; </span><span class="s2">+ </span><span class="s1">deck</span><span class="s2">.</span><span class="s1">pop</span><span class="s2">());</span>
+        <span class="s2">}</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s1">deck</span><span class="s2">);</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s2">\n</span><span class="s3">==== Deck Test Complete ====&quot;</span><span class="s2">);</span>
+
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Current size: &quot; </span><span class="s2">+ </span><span class="s1">deck</span><span class="s2">.</span><span class="s1">size</span><span class="s2">());</span>
+    <span class="s2">}</span>
+<span class="s2">}</span>
+</pre>
+</body>
+</html>
