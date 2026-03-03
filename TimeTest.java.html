@@ -1,0 +1,165 @@
+<html>
+<head>
+<title>TimeTest.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #c792ea; font-style: italic;}
+.s1 { color: #c3cee3;}
+.s2 { color: #89ddff;}
+.s3 { color: #959daa; font-style: italic;}
+.s4 { color: #f78c6c;}
+.s5 { color: #c3e88d;}
+</style>
+</head>
+<body bgcolor="#1b2240">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+TimeTest.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import static </span><span class="s1">org</span><span class="s2">.</span><span class="s1">junit</span><span class="s2">.</span><span class="s1">Assert</span><span class="s2">.*;</span>
+
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">junit</span><span class="s2">.</span><span class="s1">Test</span><span class="s2">;</span>
+
+<span class="s3">/**</span>
+ <span class="s3">* JUnit Time Tests</span>
+ <span class="s3">*/</span>
+<span class="s0">public class </span><span class="s1">TimeTest </span><span class="s2">{</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testIncrementSeconds1</span><span class="s2">() {</span>
+        <span class="s1">Time time </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Time</span><span class="s2">(</span><span class="s4">11</span><span class="s2">, </span><span class="s4">50</span><span class="s2">, </span><span class="s4">25</span><span class="s2">);</span>
+        <span class="s1">time</span><span class="s2">.</span><span class="s1">incrementSeconds</span><span class="s2">();</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Seconds &quot;</span><span class="s2">, </span><span class="s4">26</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getSeconds</span><span class="s2">());</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Minutes &quot;</span><span class="s2">, </span><span class="s4">50</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getMinutes</span><span class="s2">());</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Hours &quot;</span><span class="s2">, </span><span class="s4">11</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getHours</span><span class="s2">());</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testIncrementSeconds2</span><span class="s2">() {</span>
+        <span class="s1">Time time </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Time</span><span class="s2">(</span><span class="s4">11</span><span class="s2">, </span><span class="s4">50</span><span class="s2">, </span><span class="s4">59</span><span class="s2">);</span>
+        <span class="s1">time</span><span class="s2">.</span><span class="s1">incrementSeconds</span><span class="s2">();</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Seconds &quot;</span><span class="s2">, </span><span class="s4">0</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getSeconds</span><span class="s2">());</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Minutes &quot;</span><span class="s2">, </span><span class="s4">51</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getMinutes</span><span class="s2">());</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Hours &quot;</span><span class="s2">, </span><span class="s4">11</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getHours</span><span class="s2">());</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testIncrementSeconds3</span><span class="s2">() {</span>
+        <span class="s1">Time time </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Time</span><span class="s2">(</span><span class="s4">11</span><span class="s2">, </span><span class="s4">59</span><span class="s2">, </span><span class="s4">59</span><span class="s2">);</span>
+        <span class="s1">time</span><span class="s2">.</span><span class="s1">incrementSeconds</span><span class="s2">();</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Seconds &quot;</span><span class="s2">, </span><span class="s4">0</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getSeconds</span><span class="s2">());</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Minutes &quot;</span><span class="s2">, </span><span class="s4">0</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getMinutes</span><span class="s2">());</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Hours &quot;</span><span class="s2">, </span><span class="s4">12</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getHours</span><span class="s2">());</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testIncrementSeconds4</span><span class="s2">() {</span>
+        <span class="s1">Time time </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Time</span><span class="s2">(</span><span class="s4">23</span><span class="s2">, </span><span class="s4">59</span><span class="s2">, </span><span class="s4">59</span><span class="s2">);</span>
+        <span class="s1">time</span><span class="s2">.</span><span class="s1">incrementSeconds</span><span class="s2">();</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Seconds &quot;</span><span class="s2">, </span><span class="s4">0</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getSeconds</span><span class="s2">());</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Minutes &quot;</span><span class="s2">, </span><span class="s4">0</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getMinutes</span><span class="s2">());</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Hours &quot;</span><span class="s2">, </span><span class="s4">0</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getHours</span><span class="s2">());</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testIncrementMinutes1</span><span class="s2">() {</span>
+        <span class="s1">Time time </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Time</span><span class="s2">(</span><span class="s4">11</span><span class="s2">, </span><span class="s4">50</span><span class="s2">, </span><span class="s4">25</span><span class="s2">);</span>
+        <span class="s1">time</span><span class="s2">.</span><span class="s1">incrementMinutes</span><span class="s2">();</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Seconds &quot;</span><span class="s2">, </span><span class="s4">25</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getSeconds</span><span class="s2">());</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Minutes &quot;</span><span class="s2">, </span><span class="s4">51</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getMinutes</span><span class="s2">());</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Hours &quot;</span><span class="s2">, </span><span class="s4">11</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getHours</span><span class="s2">());</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testIncrementMinutes2</span><span class="s2">() {</span>
+        <span class="s1">Time time </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Time</span><span class="s2">(</span><span class="s4">11</span><span class="s2">, </span><span class="s4">59</span><span class="s2">, </span><span class="s4">59</span><span class="s2">);</span>
+        <span class="s1">time</span><span class="s2">.</span><span class="s1">incrementMinutes</span><span class="s2">();</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Seconds &quot;</span><span class="s2">, </span><span class="s4">59</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getSeconds</span><span class="s2">());</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Minutes &quot;</span><span class="s2">, </span><span class="s4">0</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getMinutes</span><span class="s2">());</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Hours &quot;</span><span class="s2">, </span><span class="s4">12</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getHours</span><span class="s2">());</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testIncrementMinutes3</span><span class="s2">() {</span>
+        <span class="s1">Time time </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Time</span><span class="s2">(</span><span class="s4">23</span><span class="s2">, </span><span class="s4">59</span><span class="s2">, </span><span class="s4">59</span><span class="s2">);</span>
+        <span class="s1">time</span><span class="s2">.</span><span class="s1">incrementMinutes</span><span class="s2">();</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Seconds &quot;</span><span class="s2">, </span><span class="s4">59</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getSeconds</span><span class="s2">());</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Minutes &quot;</span><span class="s2">, </span><span class="s4">0</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getMinutes</span><span class="s2">());</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Hours &quot;</span><span class="s2">, </span><span class="s4">0</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getHours</span><span class="s2">());</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testIncrementHours1</span><span class="s2">() {</span>
+        <span class="s1">Time time </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Time</span><span class="s2">(</span><span class="s4">11</span><span class="s2">, </span><span class="s4">50</span><span class="s2">, </span><span class="s4">25</span><span class="s2">);</span>
+        <span class="s1">time</span><span class="s2">.</span><span class="s1">incrementHours</span><span class="s2">();</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Seconds &quot;</span><span class="s2">, </span><span class="s4">25</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getSeconds</span><span class="s2">());</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Minutes &quot;</span><span class="s2">, </span><span class="s4">50</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getMinutes</span><span class="s2">());</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Hours &quot;</span><span class="s2">, </span><span class="s4">12</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getHours</span><span class="s2">());</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testIncrementHours2</span><span class="s2">() {</span>
+        <span class="s1">Time time </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Time</span><span class="s2">(</span><span class="s4">23</span><span class="s2">, </span><span class="s4">59</span><span class="s2">, </span><span class="s4">59</span><span class="s2">);</span>
+        <span class="s1">time</span><span class="s2">.</span><span class="s1">incrementHours</span><span class="s2">();</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Seconds &quot;</span><span class="s2">, </span><span class="s4">59</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getSeconds</span><span class="s2">());</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Minutes &quot;</span><span class="s2">, </span><span class="s4">59</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getMinutes</span><span class="s2">());</span>
+        <span class="s1">assertEquals</span><span class="s2">(</span><span class="s5">&quot;Hours &quot;</span><span class="s2">, </span><span class="s4">0</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">getHours</span><span class="s2">());</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testEquals1</span><span class="s2">() {</span>
+        <span class="s1">Time time1 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Time</span><span class="s2">(</span><span class="s4">23</span><span class="s2">, </span><span class="s4">59</span><span class="s2">, </span><span class="s4">59</span><span class="s2">);</span>
+        <span class="s1">Time time2 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Time</span><span class="s2">(</span><span class="s4">23</span><span class="s2">, </span><span class="s4">59</span><span class="s2">, </span><span class="s4">59</span><span class="s2">);</span>
+        <span class="s1">assertTrue</span><span class="s2">(</span><span class="s5">&quot;All fields were equal&quot;</span><span class="s2">, </span><span class="s1">time1</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s1">time2</span><span class="s2">));</span>
+        <span class="s1">assertTrue</span><span class="s2">(</span><span class="s5">&quot;All fields were equal&quot;</span><span class="s2">, </span><span class="s1">time2</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s1">time1</span><span class="s2">));</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testEquals2</span><span class="s2">() {</span>
+        <span class="s1">Time time1 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Time</span><span class="s2">(</span><span class="s4">23</span><span class="s2">, </span><span class="s4">59</span><span class="s2">, </span><span class="s4">59</span><span class="s2">);</span>
+        <span class="s1">assertTrue</span><span class="s2">(</span><span class="s5">&quot;Object should equal itself&quot;</span><span class="s2">, </span><span class="s1">time1</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s1">time1</span><span class="s2">));</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testEquals3</span><span class="s2">() {</span>
+        <span class="s1">Time time1 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Time</span><span class="s2">(</span><span class="s4">23</span><span class="s2">, </span><span class="s4">59</span><span class="s2">, </span><span class="s4">59</span><span class="s2">);</span>
+        <span class="s1">Time time2 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Time</span><span class="s2">(</span><span class="s4">10</span><span class="s2">, </span><span class="s4">59</span><span class="s2">, </span><span class="s4">59</span><span class="s2">);</span>
+        <span class="s1">assertFalse</span><span class="s2">(</span><span class="s5">&quot;Different hours&quot;</span><span class="s2">, </span><span class="s1">time1</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s1">time2</span><span class="s2">));</span>
+        <span class="s1">assertFalse</span><span class="s2">(</span><span class="s5">&quot;Different hours&quot;</span><span class="s2">, </span><span class="s1">time2</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s1">time1</span><span class="s2">));</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testEquals4</span><span class="s2">() {</span>
+        <span class="s1">Time time1 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Time</span><span class="s2">(</span><span class="s4">23</span><span class="s2">, </span><span class="s4">10</span><span class="s2">, </span><span class="s4">0</span><span class="s2">);</span>
+        <span class="s1">Time time2 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Time</span><span class="s2">(</span><span class="s4">23</span><span class="s2">, </span><span class="s4">59</span><span class="s2">, </span><span class="s4">0</span><span class="s2">);</span>
+        <span class="s1">assertFalse</span><span class="s2">(</span><span class="s5">&quot;Different minutes&quot;</span><span class="s2">, </span><span class="s1">time1</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s1">time2</span><span class="s2">));</span>
+        <span class="s1">assertFalse</span><span class="s2">(</span><span class="s5">&quot;Different minutes&quot;</span><span class="s2">, </span><span class="s1">time2</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s1">time1</span><span class="s2">));</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testEquals5</span><span class="s2">() {</span>
+        <span class="s1">Time time1 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Time</span><span class="s2">(</span><span class="s4">23</span><span class="s2">, </span><span class="s4">10</span><span class="s2">, </span><span class="s4">20</span><span class="s2">);</span>
+        <span class="s1">Time time2 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Time</span><span class="s2">(</span><span class="s4">23</span><span class="s2">, </span><span class="s4">10</span><span class="s2">, </span><span class="s4">0</span><span class="s2">);</span>
+        <span class="s1">assertFalse</span><span class="s2">(</span><span class="s5">&quot;Different seconds&quot;</span><span class="s2">, </span><span class="s1">time1</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s1">time2</span><span class="s2">));</span>
+        <span class="s1">assertFalse</span><span class="s2">(</span><span class="s5">&quot;Different seconds&quot;</span><span class="s2">, </span><span class="s1">time2</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s1">time1</span><span class="s2">));</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testEquals6</span><span class="s2">() {</span>
+        <span class="s1">Time time1 </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Time</span><span class="s2">(</span><span class="s4">23</span><span class="s2">, </span><span class="s4">10</span><span class="s2">, </span><span class="s4">0</span><span class="s2">);</span>
+        <span class="s1">Integer i </span><span class="s2">= </span><span class="s4">23</span><span class="s2">;</span>
+        <span class="s1">assertFalse</span><span class="s2">(</span><span class="s5">&quot;Different types&quot;</span><span class="s2">, </span><span class="s1">time1</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s1">i</span><span class="s2">));</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Test</span>
+    <span class="s0">public void </span><span class="s1">testToString</span><span class="s2">() {</span>
+        <span class="s1">Time time </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Time</span><span class="s2">(</span><span class="s4">12</span><span class="s2">, </span><span class="s4">25</span><span class="s2">, </span><span class="s4">30</span><span class="s2">);</span>
+        <span class="s1">assertTrue</span><span class="s2">(</span><span class="s5">&quot;String format problem&quot;</span><span class="s2">, </span><span class="s1">time</span><span class="s2">.</span><span class="s1">toString</span><span class="s2">().</span><span class="s1">equals</span><span class="s2">(</span><span class="s5">&quot;12:25:30&quot;</span><span class="s2">));</span>
+        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s0">new </span><span class="s1">Time</span><span class="s2">());</span>
+    <span class="s2">}</span>
+
+
+<span class="s2">}</span></pre>
+</body>
+</html>
