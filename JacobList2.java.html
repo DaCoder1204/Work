@@ -42,9 +42,9 @@ public class JacobList2<T> {
         count++;
     }
 
-    // ---------------------------------------------------------
-    // removeAt(index)
-    // ---------------------------------------------------------
+    
+    // removes value at index
+    
     public void removeAt(int index) {
         if (index < 0 || index >= count) {
             System.out.println("Invalid remove index: " + index);
@@ -80,9 +80,7 @@ public class JacobList2<T> {
         count--;
     }
 
-    // ---------------------------------------------------------
-    // remove(value)
-    // ---------------------------------------------------------
+   
     public void remove(T value) {
         if (value == null) {
             System.out.println("Cannot remove null value.");
