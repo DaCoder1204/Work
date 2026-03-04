@@ -1,247 +1,220 @@
-<html>
-<head>
-<title>List3.java</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-.s0 { color: #c792ea; font-style: italic;}
-.s1 { color: #c3cee3;}
-.s2 { color: #89ddff;}
-.s3 { color: #959daa; font-style: italic;}
-.s4 { color: #f78c6c;}
-.s5 { color: #c3e88d;}
-</style>
-</head>
-<body bgcolor="#1b2240">
-<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
-<tr><td><center>
-<font face="Arial, Helvetica" color="#000000">
-List3.java</font>
-</center></td></tr></table>
-<pre><span class="s0">public class </span><span class="s1">List3</span><span class="s2">&lt;</span><span class="s1">T</span><span class="s2">&gt; {</span>
+public class List3<T> {
 
-    <span class="s0">private class </span><span class="s1">Node </span><span class="s2">{</span>
-        <span class="s1">T data</span><span class="s2">;</span>
-        <span class="s1">Node next</span><span class="s2">;</span>
-        <span class="s1">Node rprevious</span><span class="s2">;</span>
+    private class Node {
+        T data;
+        Node next;
+        Node previous;
 
-        <span class="s1">Node</span><span class="s2">(</span><span class="s1">T d</span><span class="s2">) {</span>
-            <span class="s1">data </span><span class="s2">= </span><span class="s1">d</span><span class="s2">;</span>
-            <span class="s1">next </span><span class="s2">= </span><span class="s0">null</span><span class="s2">;</span>
-            <span class="s1">rprevious </span><span class="s2">= </span><span class="s0">null</span><span class="s2">;</span>
-        <span class="s2">}</span>
-    <span class="s2">}</span>
+        Node(T d) {
+            data = d;
+            next = null;
+            previous = null;
+        }
+    }
 
-    <span class="s0">private </span><span class="s1">Node head</span><span class="s2">;</span>
-    <span class="s0">private </span><span class="s1">Node tail</span><span class="s2">;   </span><span class="s3">// NEW: last node</span>
-    <span class="s0">private int </span><span class="s1">count</span><span class="s2">;</span>
+    private Node head;
+    private Node tail;
+    private int count;
 
-    <span class="s0">public </span><span class="s1">List3</span><span class="s2">() {</span>
-        <span class="s1">head </span><span class="s2">= </span><span class="s0">null</span><span class="s2">;</span>
-        <span class="s1">tail </span><span class="s2">= </span><span class="s0">null</span><span class="s2">;</span>
-        <span class="s1">count </span><span class="s2">= </span><span class="s4">0</span><span class="s2">;</span>
-    <span class="s2">}</span>
+    public List3() {
+        head = null;
+        tail = null;
+        count = 0;
+    }
+    
+    
+    public void add(T value) {
+        Node n = new Node(value);
 
-    <span class="s3">// ---------------------------------------------------------</span>
-    <span class="s3">// ADD — maintains circular structure</span>
-    <span class="s3">// ---------------------------------------------------------</span>
-    <span class="s0">public void </span><span class="s1">add</span><span class="s2">(</span><span class="s1">T value</span><span class="s2">) {</span>
-        <span class="s1">Node n </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Node</span><span class="s2">(</span><span class="s1">value</span><span class="s2">);</span>
+        if (head == null) {
+            head = n;
+            tail = n;
 
-        <span class="s0">if </span><span class="s2">(</span><span class="s1">head </span><span class="s2">== </span><span class="s0">null</span><span class="s2">) {</span>
-            <span class="s1">head </span><span class="s2">= </span><span class="s1">n</span><span class="s2">;</span>
-            <span class="s1">tail </span><span class="s2">= </span><span class="s1">n</span><span class="s2">;</span>
+            // circular link
+            head.next = head;
+            head.previous = head;
+        } else {
+            // attaches after tail
+            tail.next = n;
+            n.previous = tail;
 
-            <span class="s3">// circular links</span>
-            <span class="s1">head</span><span class="s2">.</span><span class="s1">next </span><span class="s2">= </span><span class="s1">head</span><span class="s2">;</span>
-            <span class="s1">head</span><span class="s2">.</span><span class="s1">rprevious </span><span class="s2">= </span><span class="s1">head</span><span class="s2">;</span>
-        <span class="s2">} </span><span class="s0">else </span><span class="s2">{</span>
-            <span class="s3">// attach after tail</span>
-            <span class="s1">tail</span><span class="s2">.</span><span class="s1">next </span><span class="s2">= </span><span class="s1">n</span><span class="s2">;</span>
-            <span class="s1">n</span><span class="s2">.</span><span class="s1">rprevious </span><span class="s2">= </span><span class="s1">tail</span><span class="s2">;</span>
+            // updates tail
+            tail = n;
 
-            <span class="s3">// update tail</span>
-            <span class="s1">tail </span><span class="s2">= </span><span class="s1">n</span><span class="s2">;</span>
+            // closes the circle
+            tail.next = head;
+            head.previous = tail;
+        }
 
-            <span class="s3">// close the circle</span>
-            <span class="s1">tail</span><span class="s2">.</span><span class="s1">next </span><span class="s2">= </span><span class="s1">head</span><span class="s2">;</span>
-            <span class="s1">head</span><span class="s2">.</span><span class="s1">rprevious </span><span class="s2">= </span><span class="s1">tail</span><span class="s2">;</span>
-        <span class="s2">}</span>
+        count++;
+    }
 
-        <span class="s1">count</span><span class="s2">++;</span>
-    <span class="s2">}</span>
+    
+    // REMOVES AT THE INDEX
+    
+    public void removeAt(int index) {
+        if (index < 0 || index >= count) {
+            System.out.println("Invalid remove index: " + index);
+            return;
+        }
 
-    <span class="s3">// ---------------------------------------------------------</span>
-    <span class="s3">// REMOVE AT INDEX</span>
-    <span class="s3">// ---------------------------------------------------------</span>
-    <span class="s0">public void </span><span class="s1">removeAt</span><span class="s2">(</span><span class="s0">int </span><span class="s1">index</span><span class="s2">) {</span>
-        <span class="s0">if </span><span class="s2">(</span><span class="s1">index </span><span class="s2">&lt; </span><span class="s4">0 </span><span class="s2">|| </span><span class="s1">index </span><span class="s2">&gt;= </span><span class="s1">count</span><span class="s2">) {</span>
-            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Invalid remove index: &quot; </span><span class="s2">+ </span><span class="s1">index</span><span class="s2">);</span>
-            <span class="s0">return</span><span class="s2">;</span>
-        <span class="s2">}</span>
+        // removes head
+        if (index == 0) {
+            if (count == 1) {
+                head = null;
+                tail = null;
+                count = 0;
+                return;
+            }
 
-        <span class="s3">// removing head</span>
-        <span class="s0">if </span><span class="s2">(</span><span class="s1">index </span><span class="s2">== </span><span class="s4">0</span><span class="s2">) {</span>
-            <span class="s0">if </span><span class="s2">(</span><span class="s1">count </span><span class="s2">== </span><span class="s4">1</span><span class="s2">) {</span>
-                <span class="s1">head </span><span class="s2">= </span><span class="s0">null</span><span class="s2">;</span>
-                <span class="s1">tail </span><span class="s2">= </span><span class="s0">null</span><span class="s2">;</span>
-                <span class="s1">count </span><span class="s2">= </span><span class="s4">0</span><span class="s2">;</span>
-                <span class="s0">return</span><span class="s2">;</span>
-            <span class="s2">}</span>
+            head = head.next;
+            head.previous = tail;
+            tail.next = head;
 
-            <span class="s1">head </span><span class="s2">= </span><span class="s1">head</span><span class="s2">.</span><span class="s1">next</span><span class="s2">;</span>
-            <span class="s1">head</span><span class="s2">.</span><span class="s1">rprevious </span><span class="s2">= </span><span class="s1">tail</span><span class="s2">;</span>
-            <span class="s1">tail</span><span class="s2">.</span><span class="s1">next </span><span class="s2">= </span><span class="s1">head</span><span class="s2">;</span>
+            count--;
+            return;
+        }
 
-            <span class="s1">count</span><span class="s2">--;</span>
-            <span class="s0">return</span><span class="s2">;</span>
-        <span class="s2">}</span>
+        Node temp = head;
 
-        <span class="s1">Node temp </span><span class="s2">= </span><span class="s1">head</span><span class="s2">;</span>
+        // moves temp to node before the one to remove
+        for (int i = 0; i < index - 1; i++) {
+            temp = temp.next;
+        }
 
-        <span class="s3">// move to node BEFORE the one to remove</span>
-        <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s1">index </span><span class="s2">- </span><span class="s4">1</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
-            <span class="s1">temp </span><span class="s2">= </span><span class="s1">temp</span><span class="s2">.</span><span class="s1">next</span><span class="s2">;</span>
-        <span class="s2">}</span>
+        Node toRemove = temp.next;
 
-        <span class="s1">Node toRemove </span><span class="s2">= </span><span class="s1">temp</span><span class="s2">.</span><span class="s1">next</span><span class="s2">;</span>
+        temp.next = toRemove.next;
+        toRemove.next.previous = temp;
 
-        <span class="s1">temp</span><span class="s2">.</span><span class="s1">next </span><span class="s2">= </span><span class="s1">toRemove</span><span class="s2">.</span><span class="s1">next</span><span class="s2">;</span>
-        <span class="s1">toRemove</span><span class="s2">.</span><span class="s1">next</span><span class="s2">.</span><span class="s1">rprevious </span><span class="s2">= </span><span class="s1">temp</span><span class="s2">;</span>
+        // if removing tail, updates the tail
+        if (toRemove == tail) {
+            tail = temp;
+        }
 
-        <span class="s3">// if removing tail, update tail</span>
-        <span class="s0">if </span><span class="s2">(</span><span class="s1">toRemove </span><span class="s2">== </span><span class="s1">tail</span><span class="s2">) {</span>
-            <span class="s1">tail </span><span class="s2">= </span><span class="s1">temp</span><span class="s2">;</span>
-        <span class="s2">}</span>
+        count--;
+    }
 
-        <span class="s1">count</span><span class="s2">--;</span>
-    <span class="s2">}</span>
+    
+    // REMOVES BY VALUE
+    
+    public void remove(T value) {
+        if (value == null) {
+            System.out.println("Cannot remove null value.");
+            return;
+        }
 
-    <span class="s3">// ---------------------------------------------------------</span>
-    <span class="s3">// REMOVE BY VALUE</span>
-    <span class="s3">// ---------------------------------------------------------</span>
-    <span class="s0">public void </span><span class="s1">remove</span><span class="s2">(</span><span class="s1">T value</span><span class="s2">) {</span>
-        <span class="s0">if </span><span class="s2">(</span><span class="s1">value </span><span class="s2">== </span><span class="s0">null</span><span class="s2">) {</span>
-            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Cannot remove null value.&quot;</span><span class="s2">);</span>
-            <span class="s0">return</span><span class="s2">;</span>
-        <span class="s2">}</span>
+        if (head == null) {
+            System.out.println("List is empty.");
+            return;
+        }
 
-        <span class="s0">if </span><span class="s2">(</span><span class="s1">head </span><span class="s2">== </span><span class="s0">null</span><span class="s2">) {</span>
-            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;List is empty.&quot;</span><span class="s2">);</span>
-            <span class="s0">return</span><span class="s2">;</span>
-        <span class="s2">}</span>
+        // removes head
+        if (head.data.equals(value)) {
+            removeAt(0);
+            return;
+        }
 
-        <span class="s3">// removing head</span>
-        <span class="s0">if </span><span class="s2">(</span><span class="s1">head</span><span class="s2">.</span><span class="s1">data</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s1">value</span><span class="s2">)) {</span>
-            <span class="s1">removeAt</span><span class="s2">(</span><span class="s4">0</span><span class="s2">);</span>
-            <span class="s0">return</span><span class="s2">;</span>
-        <span class="s2">}</span>
+        Node temp = head;
 
-        <span class="s1">Node temp </span><span class="s2">= </span><span class="s1">head</span><span class="s2">;</span>
+        // loop until return to head
+        do {
+            if (temp.next.data.equals(value)) {
+                Node toRemove = temp.next;
 
-        <span class="s3">// loop until we return to head (circular)</span>
-        <span class="s0">do </span><span class="s2">{</span>
-            <span class="s0">if </span><span class="s2">(</span><span class="s1">temp</span><span class="s2">.</span><span class="s1">next</span><span class="s2">.</span><span class="s1">data</span><span class="s2">.</span><span class="s1">equals</span><span class="s2">(</span><span class="s1">value</span><span class="s2">)) {</span>
-                <span class="s1">Node toRemove </span><span class="s2">= </span><span class="s1">temp</span><span class="s2">.</span><span class="s1">next</span><span class="s2">;</span>
+                temp.next = toRemove.next;
+                toRemove.next.previous = temp;
 
-                <span class="s1">temp</span><span class="s2">.</span><span class="s1">next </span><span class="s2">= </span><span class="s1">toRemove</span><span class="s2">.</span><span class="s1">next</span><span class="s2">;</span>
-                <span class="s1">toRemove</span><span class="s2">.</span><span class="s1">next</span><span class="s2">.</span><span class="s1">rprevious </span><span class="s2">= </span><span class="s1">temp</span><span class="s2">;</span>
+                if (toRemove == tail) {
+                    tail = temp;
+                }
 
-                <span class="s0">if </span><span class="s2">(</span><span class="s1">toRemove </span><span class="s2">== </span><span class="s1">tail</span><span class="s2">) {</span>
-                    <span class="s1">tail </span><span class="s2">= </span><span class="s1">temp</span><span class="s2">;</span>
-                <span class="s2">}</span>
+                count--;
+                return;
+            }
 
-                <span class="s1">count</span><span class="s2">--;</span>
-                <span class="s0">return</span><span class="s2">;</span>
-            <span class="s2">}</span>
+            temp = temp.next;
 
-            <span class="s1">temp </span><span class="s2">= </span><span class="s1">temp</span><span class="s2">.</span><span class="s1">next</span><span class="s2">;</span>
+        } while (temp != head);
 
-        <span class="s2">} </span><span class="s0">while </span><span class="s2">(</span><span class="s1">temp </span><span class="s2">!= </span><span class="s1">head</span><span class="s2">);</span>
+        System.out.println("Value not found: " + value);
+    }
+    
+    
+    public int size() {
+        return count;
+    }
+    
+    
+    public T get(int index) {
+        if (index < 0 || index >= count) {
+            System.out.println("Invalid get index: " + index);
+            return null;
+        }
 
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Value not found: &quot; </span><span class="s2">+ </span><span class="s1">value</span><span class="s2">);</span>
-    <span class="s2">}</span>
+        Node temp = head;
 
-    <span class="s3">// ---------------------------------------------------------</span>
-    <span class="s3">// SIZE</span>
-    <span class="s3">// ---------------------------------------------------------</span>
-    <span class="s0">public int </span><span class="s1">size</span><span class="s2">() {</span>
-        <span class="s0">return </span><span class="s1">count</span><span class="s2">;</span>
-    <span class="s2">}</span>
+        for (int i = 0; i < index; i++) {
+            temp = temp.next;
+        }
 
-    <span class="s3">// ---------------------------------------------------------</span>
-    <span class="s3">// GET</span>
-    <span class="s3">// ---------------------------------------------------------</span>
-    <span class="s0">public </span><span class="s1">T get</span><span class="s2">(</span><span class="s0">int </span><span class="s1">index</span><span class="s2">) {</span>
-        <span class="s0">if </span><span class="s2">(</span><span class="s1">index </span><span class="s2">&lt; </span><span class="s4">0 </span><span class="s2">|| </span><span class="s1">index </span><span class="s2">&gt;= </span><span class="s1">count</span><span class="s2">) {</span>
-            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Invalid get index: &quot; </span><span class="s2">+ </span><span class="s1">index</span><span class="s2">);</span>
-            <span class="s0">return null</span><span class="s2">;</span>
-        <span class="s2">}</span>
+        return temp.data;
+    }
 
-        <span class="s1">Node temp </span><span class="s2">= </span><span class="s1">head</span><span class="s2">;</span>
+    
+    // PRINTS FORWARD
+    
+    public void print() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
 
-        <span class="s0">for </span><span class="s2">(</span><span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i </span><span class="s2">&lt; </span><span class="s1">index</span><span class="s2">; </span><span class="s1">i</span><span class="s2">++) {</span>
-            <span class="s1">temp </span><span class="s2">= </span><span class="s1">temp</span><span class="s2">.</span><span class="s1">next</span><span class="s2">;</span>
-        <span class="s2">}</span>
+        Node temp = head;
+        int i = 0;
 
-        <span class="s0">return </span><span class="s1">temp</span><span class="s2">.</span><span class="s1">data</span><span class="s2">;</span>
-    <span class="s2">}</span>
+        while (i < count) {
+            System.out.println("Index " + i + ": " + temp.data);
+            temp = temp.next;
+            i++;
+        }
+    }
 
-    <span class="s3">// ---------------------------------------------------------</span>
-    <span class="s3">// PRINT FORWARD (STOP AFTER count STEPS)</span>
-    <span class="s3">// ---------------------------------------------------------</span>
-    <span class="s0">public void </span><span class="s1">print</span><span class="s2">() {</span>
-        <span class="s0">if </span><span class="s2">(</span><span class="s1">head </span><span class="s2">== </span><span class="s0">null</span><span class="s2">) {</span>
-            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;List is empty&quot;</span><span class="s2">);</span>
-            <span class="s0">return</span><span class="s2">;</span>
-        <span class="s2">}</span>
+    
+    // PRINTS REVERSE
+    
+    public void printReverse() {
+        if (tail == null) {
+            System.out.println("List is empty");
+            return;
+        }
 
-        <span class="s1">Node temp </span><span class="s2">= </span><span class="s1">head</span><span class="s2">;</span>
-        <span class="s0">int </span><span class="s1">i </span><span class="s2">= </span><span class="s4">0</span><span class="s2">;</span>
+        Node temp = tail;
+        int index = count - 1;
 
-        <span class="s0">while </span><span class="s2">(</span><span class="s1">i </span><span class="s2">&lt; </span><span class="s1">count</span><span class="s2">) {</span>
-            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Index &quot; </span><span class="s2">+ </span><span class="s1">i </span><span class="s2">+ </span><span class="s5">&quot;: &quot; </span><span class="s2">+ </span><span class="s1">temp</span><span class="s2">.</span><span class="s1">data</span><span class="s2">);</span>
-            <span class="s1">temp </span><span class="s2">= </span><span class="s1">temp</span><span class="s2">.</span><span class="s1">next</span><span class="s2">;</span>
-            <span class="s1">i</span><span class="s2">++;</span>
-        <span class="s2">}</span>
-    <span class="s2">}</span>
+        while (index >= 0) {
+            System.out.println("Index " + index + ": " + temp.data);
+            temp = temp.previous;
+            index--;
+        }
+    }
 
-    <span class="s3">// ---------------------------------------------------------</span>
-    <span class="s3">// PRINT REVERSE (STOP AFTER count STEPS)</span>
-    <span class="s3">// ---------------------------------------------------------</span>
-    <span class="s0">public void </span><span class="s1">printReverse</span><span class="s2">() {</span>
-        <span class="s0">if </span><span class="s2">(</span><span class="s1">tail </span><span class="s2">== </span><span class="s0">null</span><span class="s2">) {</span>
-            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;List is empty&quot;</span><span class="s2">);</span>
-            <span class="s0">return</span><span class="s2">;</span>
-        <span class="s2">}</span>
+   
+    // ITERATES FORWARDS
+    
+    public void iterateForward() {
+        if (head == null) {
+            System.out.println("List is empty");
+            return;
+        }
 
-        <span class="s1">Node temp </span><span class="s2">= </span><span class="s1">tail</span><span class="s2">;</span>
-        <span class="s0">int </span><span class="s1">index </span><span class="s2">= </span><span class="s1">count </span><span class="s2">- </span><span class="s4">1</span><span class="s2">;</span>
+        Node temp = head;
+        int steps = 0;
 
-        <span class="s0">while </span><span class="s2">(</span><span class="s1">index </span><span class="s2">&gt;= </span><span class="s4">0</span><span class="s2">) {</span>
-            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Index &quot; </span><span class="s2">+ </span><span class="s1">index </span><span class="s2">+ </span><span class="s5">&quot;: &quot; </span><span class="s2">+ </span><span class="s1">temp</span><span class="s2">.</span><span class="s1">data</span><span class="s2">);</span>
-            <span class="s1">temp </span><span class="s2">= </span><span class="s1">temp</span><span class="s2">.</span><span class="s1">rprevious</span><span class="s2">;</span>
-            <span class="s1">index</span><span class="s2">--;</span>
-        <span class="s2">}</span>
-    <span class="s2">}</span>
-
-    <span class="s3">// ---------------------------------------------------------</span>
-    <span class="s3">// ITERATE FORWARD SAFELY</span>
-    <span class="s3">// ---------------------------------------------------------</span>
-    <span class="s0">public void </span><span class="s1">iterateForward</span><span class="s2">() {</span>
-        <span class="s0">if </span><span class="s2">(</span><span class="s1">head </span><span class="s2">== </span><span class="s0">null</span><span class="s2">) {</span>
-            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;List is empty&quot;</span><span class="s2">);</span>
-            <span class="s0">return</span><span class="s2">;</span>
-        <span class="s2">}</span>
-
-        <span class="s1">Node temp </span><span class="s2">= </span><span class="s1">head</span><span class="s2">;</span>
-        <span class="s0">int </span><span class="s1">steps </span><span class="s2">= </span><span class="s4">0</span><span class="s2">;</span>
-
-        <span class="s0">while </span><span class="s2">(</span><span class="s1">steps </span><span class="s2">&lt; </span><span class="s1">count</span><span class="s2">) {</span>
-            <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s5">&quot;Visiting: &quot; </span><span class="s2">+ </span><span class="s1">temp</span><span class="s2">.</span><span class="s1">data</span><span class="s2">);</span>
-            <span class="s1">temp </span><span class="s2">= </span><span class="s1">temp</span><span class="s2">.</span><span class="s1">next</span><span class="s2">;</span>
-            <span class="s1">steps</span><span class="s2">++;</span>
-        <span class="s2">}</span>
-    <span class="s2">}</span>
-<span class="s2">}</span></pre>
-</body>
-</html>
+        while (steps < count) {
+            System.out.println("Visiting: " + temp.data);
+            temp = temp.next;
+            steps++;
+        }
+    }
+}
