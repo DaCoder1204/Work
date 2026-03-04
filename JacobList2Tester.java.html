@@ -1,79 +1,59 @@
-<html>
-<head>
-<title>JacobList2Tester.java</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<style type="text/css">
-.s0 { color: #c792ea; font-style: italic;}
-.s1 { color: #c3cee3;}
-.s2 { color: #89ddff;}
-.s3 { color: #c3e88d;}
-.s4 { color: #f78c6c;}
-</style>
-</head>
-<body bgcolor="#1b2240">
-<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
-<tr><td><center>
-<font face="Arial, Helvetica" color="#000000">
-JacobList2Tester.java</font>
-</center></td></tr></table>
-<pre><span class="s0">public class </span><span class="s1">JacobList2Tester </span><span class="s2">{</span>
-    <span class="s0">public static void </span><span class="s1">main</span><span class="s2">(</span><span class="s1">String</span><span class="s2">[] </span><span class="s1">args</span><span class="s2">) {</span>
+public class JacobList2Tester {
+    public static void main(String[] args) {
 
-        <span class="s1">JacobList2</span><span class="s2">&lt;</span><span class="s1">String</span><span class="s2">&gt; </span><span class="s1">list </span><span class="s2">= </span><span class="s0">new </span><span class="s1">JacobList2</span><span class="s2">&lt;&gt;();</span>
+        JacobList2<String> list = new JacobList2<>();
 
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;=== Adding items ===&quot;</span><span class="s2">);</span>
-        <span class="s1">list</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s3">&quot;Ben&quot;</span><span class="s2">);</span>
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Size: &quot; </span><span class="s2">+ </span><span class="s1">list</span><span class="s2">.</span><span class="s1">size</span><span class="s2">());</span>
+        System.out.println("=== Adding items ===");
+        list.add("Ben");
+        System.out.println("Size: " + list.size());
 
-        <span class="s1">list</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s3">&quot;James&quot;</span><span class="s2">);</span>
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Size: &quot; </span><span class="s2">+ </span><span class="s1">list</span><span class="s2">.</span><span class="s1">size</span><span class="s2">());</span>
+        list.add("James");
+        System.out.println("Size: " + list.size());
 
-        <span class="s1">list</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s3">&quot;Charlie&quot;</span><span class="s2">);</span>
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Size: &quot; </span><span class="s2">+ </span><span class="s1">list</span><span class="s2">.</span><span class="s1">size</span><span class="s2">());</span>
+        list.add("Charlie");
+        System.out.println("Size: " + list.size());
 
-        <span class="s1">list</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s3">&quot;Harry&quot;</span><span class="s2">);</span>
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Size: &quot; </span><span class="s2">+ </span><span class="s1">list</span><span class="s2">.</span><span class="s1">size</span><span class="s2">());</span>
+        list.add("Harry");
+        System.out.println("Size: " + list.size());
 
-        <span class="s1">list</span><span class="s2">.</span><span class="s1">add</span><span class="s2">(</span><span class="s3">&quot;Eric&quot;</span><span class="s2">);</span>
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Size: &quot; </span><span class="s2">+ </span><span class="s1">list</span><span class="s2">.</span><span class="s1">size</span><span class="s2">());</span>
+        list.add("Eric");
+        System.out.println("Size: " + list.size());
 
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s2">\n</span><span class="s3">=== Current list (print) ===&quot;</span><span class="s2">);</span>
-        <span class="s1">list</span><span class="s2">.</span><span class="s1">print</span><span class="s2">();</span>
+        System.out.println("\n=== Current list (print) ===");
+        list.print();
 
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s2">\n</span><span class="s3">=== Testing get ===&quot;</span><span class="s2">);</span>
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Item at index 0: &quot; </span><span class="s2">+ </span><span class="s1">list</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s4">0</span><span class="s2">));</span>
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Item at index 2: &quot; </span><span class="s2">+ </span><span class="s1">list</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s4">2</span><span class="s2">));</span>
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Item at index 4: &quot; </span><span class="s2">+ </span><span class="s1">list</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s4">4</span><span class="s2">));</span>
+        System.out.println("\n=== Testing get ===");
+        System.out.println("Item at index 0: " + list.get(0));
+        System.out.println("Item at index 2: " + list.get(2));
+        System.out.println("Item at index 4: " + list.get(4));
 
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s2">\n</span><span class="s3">=== Reverse print ===&quot;</span><span class="s2">);</span>
-        <span class="s1">list</span><span class="s2">.</span><span class="s1">printReverse</span><span class="s2">();</span>
+        System.out.println("\n=== Reverse print ===");
+        list.printReverse();
 
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s2">\n</span><span class="s3">=== Forward iteration ===&quot;</span><span class="s2">);</span>
-        <span class="s1">list</span><span class="s2">.</span><span class="s1">iterateForward</span><span class="s2">();</span>
+        System.out.println("\n=== Forward iteration ===");
+        list.iterateForward();
 
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s2">\n</span><span class="s3">=== Removing by index (removeAt) ===&quot;</span><span class="s2">);</span>
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Removing index 2...&quot;</span><span class="s2">);</span>
-        <span class="s1">list</span><span class="s2">.</span><span class="s1">removeAt</span><span class="s2">(</span><span class="s4">2</span><span class="s2">);</span>
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Size: &quot; </span><span class="s2">+ </span><span class="s1">list</span><span class="s2">.</span><span class="s1">size</span><span class="s2">());</span>
-        <span class="s1">list</span><span class="s2">.</span><span class="s1">print</span><span class="s2">();</span>
+        System.out.println("\n=== Removing by index (removeAt) ===");
+        System.out.println("Removing index 2...");
+        list.removeAt(2);
+        System.out.println("Size: " + list.size());
+        list.print();
 
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s2">\n</span><span class="s3">Removing index 0...&quot;</span><span class="s2">);</span>
-        <span class="s1">list</span><span class="s2">.</span><span class="s1">removeAt</span><span class="s2">(</span><span class="s4">0</span><span class="s2">);</span>
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Size: &quot; </span><span class="s2">+ </span><span class="s1">list</span><span class="s2">.</span><span class="s1">size</span><span class="s2">());</span>
-        <span class="s1">list</span><span class="s2">.</span><span class="s1">print</span><span class="s2">();</span>
+        System.out.println("\nRemoving index 0...");
+        list.removeAt(0);
+        System.out.println("Size: " + list.size());
+        list.print();
 
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s2">\n</span><span class="s3">=== Removing by value (remove(value)) ===&quot;</span><span class="s2">);</span>
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Removing 'Harry'...&quot;</span><span class="s2">);</span>
-        <span class="s1">list</span><span class="s2">.</span><span class="s1">remove</span><span class="s2">(</span><span class="s3">&quot;Harry&quot;</span><span class="s2">);</span>
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;Size: &quot; </span><span class="s2">+ </span><span class="s1">list</span><span class="s2">.</span><span class="s1">size</span><span class="s2">());</span>
-        <span class="s1">list</span><span class="s2">.</span><span class="s1">print</span><span class="s2">();</span>
+        System.out.println("\n=== Removing by value (remove(value)) ===");
+        System.out.println("Removing 'Harry'...");
+        list.remove("Harry");
+        System.out.println("Size: " + list.size());
+        list.print();
 
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s2">\n</span><span class="s3">Trying to remove 'NotHere'...&quot;</span><span class="s2">);</span>
-        <span class="s1">list</span><span class="s2">.</span><span class="s1">remove</span><span class="s2">(</span><span class="s3">&quot;NotHere&quot;</span><span class="s2">);</span>
+        System.out.println("\nTrying to remove 'NotHere'...");
+        list.remove("NotHere");
 
-        <span class="s1">System</span><span class="s2">.</span><span class="s1">out</span><span class="s2">.</span><span class="s1">println</span><span class="s2">(</span><span class="s3">&quot;</span><span class="s2">\n</span><span class="s3">=== Final reverse print ===&quot;</span><span class="s2">);</span>
-        <span class="s1">list</span><span class="s2">.</span><span class="s1">printReverse</span><span class="s2">();</span>
-    <span class="s2">}</span>
-<span class="s2">}</span></pre>
-</body>
-</html>
+        System.out.println("\n=== Final reverse print ===");
+        list.printReverse();
+    }
+}
